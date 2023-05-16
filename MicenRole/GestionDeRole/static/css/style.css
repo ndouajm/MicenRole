@@ -1,0 +1,10 @@
+.demo {
+    color: aqua;
+}
+
+.form-group input:focus {
+    border-bottom: 2px solid #0dff00;
+}
+.form-group input:hover {
+    border-bottom: 2px solid #ff9900;
+}

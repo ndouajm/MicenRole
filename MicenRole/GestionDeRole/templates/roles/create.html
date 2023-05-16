@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="offset-2 col-sm-8 shadow p-4">
+        <form action="{% url 'create' %}" method="post" class="row justify-content-center">
+            {% csrf_token %}
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" name="nom" id="nom" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="nom">Date :</label>
+                    <input type="date" name="date" id="date" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="date_conseil">Date de conseil :</label>
+                    <input type="datetime-local" name="date_conseil" id="date_conseil" class="form-control"
+                        placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="objet">Objet :</label>
+                    <input type="text" name="objet" id="objet" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.etats.id_for_label }}">Etats :</label>
+                    <select name="{{ form.etats.name }}" id="{{ form.etats.id_for_label }}" class="form-control">
+                        {% for value, label in form.fields.etats.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="objet">Enfants :</label>
+                    <input type="number" name="enfants" id="enfants" class="form-control" placeholder="">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="economie">Economie :</label>
+                    <textarea name="economie" id="economie" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recommandation">Recommandation :</label>
+                    <textarea name="recommandation" id="recommandation" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="observation_ct">Observation CT :</label>
+                    <textarea name="observation_ct" id="observation_ct" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="order_jour">Ordre du jour :</label>
+                    <input type="text" name="order_jour" id="order_jour" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="document">Documents :</label>
+                    <input type="file" name="document" id="document" class="form-control" placeholder="">
+                </div>
+            </div>
+            <div class="col mx-4">
+                <button type="submit" class="btn btn-outline-success">Sauvegarder</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock  %}

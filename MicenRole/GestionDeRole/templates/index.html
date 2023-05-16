@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container container-xl mt-5">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="">
+					<a href="{% url 'create' %}" class="btn btn-success"><i class="material-icons">&#xE147;</i>
+						<span>Add</span></a>
+				</div>
+			</div>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+						</th>
+						<th>Nom</th>
+						<th>Date d'ajout</th>
+						<th>Date de conseil</th>
+						<th>Objet</th>
+						<th>Nbr Enfants</th>
+						<th>Economie</th>
+						<th>Document</th>
+						<th>Observation_ct</th>
+						<th>Etat</th>
+
+						<th class="demo">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% for role in roles %}
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+						{% comment %} <td>{{ role.nom }}</td> {% endcomment %}
+
+						<td><a href="{% url 'role_detail' role.id %}">{{ role.nom }}</a></td>
+						<td>{{ role.date }}</td>
+						<td>{{ role.date_conseil }}</td>
+						<td>{{ role.objet }}</td>
+						<td>{{ role.enfants }}</td>
+						<td>{{ role.economie }}</td>
+						<td download>{{ role.document }}</td>
+						<td>{{ role.observation_ct }}</td>
+						<td>
+							{% for value, label in form.fields.etats.choices %}
+							{% if value == role.etats %}
+							{{ label }}
+							{% endif %}
+							{% endfor %}
+						</td>
+
+
+						<td>
+							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
+									data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+							<a href="{% url 'print_document' %}" target="_blank">Imprimer</a>
+
+						</td>
+					</tr>
+
+
+					{% endfor %}
+
+
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}
