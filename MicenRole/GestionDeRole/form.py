@@ -5,17 +5,18 @@ from django import forms
 class RoleCreate(ModelForm):
     class Meta:
         model = Roles
-        date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+        date_echeance = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
         
         fields = ('nom',
-                'date',
-                'enfants',
+                'date_echeance',
+                'type_document',
+                'objet',
                 'date_conseil',
                 'etats',
-                'objet',
                 'economie',
-                'recommandation',
                 'observation_ct',
-                'order_jour',
+                'recommandation',
+                'alert_impact',
+                'commentaire',
                 'document'
                 )

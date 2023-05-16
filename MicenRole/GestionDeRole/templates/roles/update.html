@@ -11,36 +11,38 @@
                     <label for="nom">Nom :</label>
                     <input type="text" name="nom" id="{{ role.nom }}" class="form-control" value="{{ role.nom }}" placeholder="">
                 </div>
-                
                 <div class="form-group">
-                    <label for="objet">Objet :</label>
-                    <input type="text" name="objet" id="{{ role.objet }}" class="form-control" value="{{ role.objet }}" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="date">Date :</label>
-                    <input type="date" name="date" id="date" class="form-control" value="{{ role.date|date:'Y-m-d' }}" placeholder="">
+                    <label for="date_echeance">Date d'Echéance :</label>
+                    <input type="date" name="date_echeance" id="date_echeance" class="form-control" value="{{ role.date_echeance|date:'Y-m-d' }}" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="date_conseil">Date de conseil :</label>
                     <input type="datetime-local" name="date_conseil" id="date_conseil" class="form-control" value="{{ role.date_conseil|date:'Y-m-d\TH:i' }}" placeholder="">
                 </div>
-                
-                
                 <div class="form-group">
-                    <label for="{{ form.etats.id_for_label }}">Etats :</label>
-                    <select name="{{ form.etats.name }}" id="{{ form.etats.id_for_label }}" class="form-control">
-                        {% for value, label in form.fields.etats.choices %}
-                        {% if value == role.etats %}
-                        <option value="{{ value }}" selected>{{ label }}</option>
-                        {% else %}
-                        <option value="{{ value }}">{{ label }}</option>
-                        {% endif %}
+                    <label for="{{ form.type_document.id_for_label }}">Type de Documents :</label>
+                    <select name="{{ form.type_document.name }}" id="{{ form.type_document.id_for_label }}" class="form-control">
+                        {% for value, label in form.fields.type_document.choices %}
+                            <option value="{{ value }}" {% if form.type_document.value == value %}selected{% endif %}>{{ label }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="enfants">Enfants :</label>
-                    <input type="number" name="enfants" id="{{ role.enfants }}" class="form-control" value="{{ role.enfants }}" placeholder="">
+                    <label for="objet">Objet :</label>
+                    <input type="text" name="objet" id="{{ role.objet }}" class="form-control" value="{{ role.objet }}" placeholder="">
+                </div>
+            
+                <div class="form-group">
+                    <label for="{{ form.etats.id_for_label }}">Etats :</label>
+                    <select name="{{ form.etats.name }}" id="{{ form.etats.id_for_label }}" class="form-control">
+                        {% for value, label in form.fields.etats.choices %}
+                            {% if value == role.etats %}
+                                <option value="{{ value }}" selected>{{ label }}</option>
+                            {% else %}
+                                <option value="{{ value }}">{{ label }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -53,18 +55,29 @@
                     <textarea name="recommandation" id="{{ role.recommandation }}" class="form-control" rows="3">{{ role.recommandation }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="alert_impact">Alert Impact :</label>
+                    <textarea name="alert_impact" id="{{ role.alert_impact }}" class="form-control" rows="3">{{ role.alert_impact }}</textarea>
+                </div>
+                <div class="form-group">
                     <label for="observation_ct">Observation CT :</label>
                     <textarea name="observation_ct" id="{{ role.observation_ct }}" class="form-control" rows="3">{{ role.observation_ct }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="commentaire">Commentaire :</label>
+                    <textarea name="commentaire" id="{{ role.commentaire }}" class="form-control" rows="3">{{ role.commentaire }}</textarea>
+                </div>
 
                 <div class="form-group">
-                    <label for="order_jour">Ordre du jour :</label>
-                    <input type="text" name="order_jour" id="{{ role.order_jour }}" class="form-control" value="{{ role.order_jour }}" placeholder="">
+                    <label for="document">Fichier join :</label>
+                    <input type="file" name="document" id="{{ role.document }}" class="form-control" value="{{ role.document }}" placeholder="">
                 </div>
+               
             </div>
             <div class="col mx-4">
                 <button type="submit" class="btn btn-outline-success">Mettre à jour</button>
             </div>
+
+          
         </form>
     </div>
 

@@ -3,59 +3,74 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="container shadow py-4">
-          
-        
+    <div class=" shadow py-4 mx-4 px-2">
+
+
         <div class="content d-flex justify-content-between">
 
-            <div class="container container-xl mt-5 w-100">
+            <div class=" mt-5 w-100">
                 <div class="table-responsive">
                     <div class="table-wrapper">
-                        <div class="table-title">
-                            <div class="">
-                                <a href="{% url 'create' %}" class="btn btn-success"><i class="material-icons">&#xE147;</i>
-                                    <span>Add</span></a>
+                        <div class="table-title row">
+                            <div class="d-flex justify-content-start">
+                                <a href="{% url 'create' %}" class="btn btn-success"><i class="fa-solid fa-plus"></i>
+                                    <span>Nouveau Roles</span></a>
+                            </div>
+                            <div class="d-flex justify-content-end col-sm-6">
+                                <td> <a href="{% url 'print_document' role_id=role.id %}" target="_blank">Imprimer</a> </td>
+                                <td> <a href="{% url 'update' role.id %}" class="btn btn-primary">Modifier</a></td>
+                                <td> <a href="{% url 'delete' role.id %}" class="btn btn-danger">Supprimer</a></td>
                             </div>
                         </div>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Nom</th>
-                                    <th>Date d'ajout</th>
+                                    <th>Date de creation</th>
                                     <th>Date de conseil</th>
+                                    <th>Date d'écheance</th>
                                     <th>Objet</th>
-                                    <th>Nbr Enfants</th>
                                     <th>Economie</th>
-                                    <th>Document</th>
                                     <th>Observation_ct</th>
+                                    <th>Recommandation</th>
+                                    <th>Alert Impact</th>
+                                    <th>Commentaire</th>
+                                    <th>Type de Document</th>
                                     <th>Etat</th>
-                                    <th>Action</th>
+                                    <th>Document</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-
+                                   
                                     <td>{{ role.nom }}</td>
-                                    <td>{{ role.date }}</td>
+                                    <td>{{ role.created_at }}</td>
                                     <td>{{ role.date_conseil }}</td>
+                                    <td>{{ role.date_echeance }}</td>
                                     <td>{{ role.objet }}</td>
-                                    <td>{{ role.enfants }}</td>
                                     <td>{{ role.economie }}</td>
-                                    <td download>{{ role.document }}</td>
                                     <td>{{ role.observation_ct }}</td>
+                                    <td>{{ role.recommandation }}</td>
+                                    <td>{{ role.alert_impact }}</td>
+                                    <td>{{ role.commentaire }}</td>
+                                    <td>{{ role.type_document }}</td>
                                     <td>{{ role.etats }}</td>
+                                    <td>
+                                        {% if role.document %}
+                                            <p>Document: <a href="{{ role.document.url }}">Télécharger</a></p>
+                                        {% else %}
+                                            <p>Aucun document disponible.</p>
+                                        {% endif %}
+                                    </td>
 
-                                    <td> <a href="{% url 'update' role.id %}" class="btn btn-primary">Modifier</a></td>
-                                    <td> <a href="{% url 'delete' role.id %}" class="btn btn-danger">Supprimer <i class="fa-solid fa-eye"></i></a></td>
-            
-            
                                 </tr>
-        
-            
-            
+
+
+
                             </tbody>
                         </table>
-            
+
                     </div>
                 </div>
             </div>

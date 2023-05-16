@@ -13,7 +13,6 @@ from io import BytesIO
 
 def index(request):
     
-    
     roles = Roles.objects.all()
     
     context = {'roles': roles}

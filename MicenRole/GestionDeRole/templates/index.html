@@ -5,8 +5,8 @@
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="">
-					<a href="{% url 'create' %}" class="btn btn-success"><i class="material-icons">&#xE147;</i>
-						<span>Add</span></a>
+					<a href="{% url 'create' %}" class="btn btn-success"><i class="fa-solid fa-plus"></i>
+						<span>Nouveau Role</span></a>
 				</div>
 			</div>
 			<table class="table table-striped table-hover">
@@ -19,14 +19,11 @@
 							</span>
 						</th>
 						<th>Nom</th>
-						<th>Date d'ajout</th>
+						<th>Type de Document</th>
 						<th>Date de conseil</th>
 						<th>Objet</th>
-						<th>Nbr Enfants</th>
-						<th>Economie</th>
-						<th>Document</th>
-						<th>Observation_ct</th>
 						<th>Etat</th>
+						<th>Date de publication</th>
 
 						<th class="demo">Action</th>
 					</tr>
@@ -41,26 +38,15 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-						{% comment %} <td>{{ role.nom }}</td> {% endcomment %}
 
-						<td><a href="{% url 'role_detail' role.id %}">{{ role.nom }}</a></td>
-						<td>{{ role.date }}</td>
+						<td>{{ role.nom }}</td>
+						<td>{{ role.type_document }}</td>
 						<td>{{ role.date_conseil }}</td>
 						<td>{{ role.objet }}</td>
-						<td>{{ role.enfants }}</td>
-						<td>{{ role.economie }}</td>
-						<td download>{{ role.document }}</td>
-						<td>{{ role.observation_ct }}</td>
 						<td>{{ role.etats }}</td>
+						<td>{{ role.created_at }}</td>
 
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-							<a href="{% url 'print_document' role_id=role.id %}" target="_blank">Imprimer</a>
+						<td><a href="{% url 'role_detail' role.id %}" title="plus de detail"><i class="fa-solid fa-eye"></i></a></td>
 
 
 						</td>
