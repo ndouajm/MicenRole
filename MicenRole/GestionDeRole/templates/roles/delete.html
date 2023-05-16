@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="offset-2 col-sm-8 shadow p-4">
+        <h1>Supprimer le rôle "{{ role.nom }}" ?</h1>
+        <form action="{% url 'delete' role.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Confirmer la suppression" class="btn btn-danger">
+            <a href="{% url 'role_detail' role.id %}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,10 +1,12 @@
 from django.db import models
 from django import forms
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Roles(models.Model):
+
     
     nom = models.CharField(("Nom"), max_length=30)
     

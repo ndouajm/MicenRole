@@ -51,14 +51,7 @@
 						<td>{{ role.economie }}</td>
 						<td download>{{ role.document }}</td>
 						<td>{{ role.observation_ct }}</td>
-						<td>
-							{% for value, label in form.fields.etats.choices %}
-							{% if value == role.etats %}
-							{{ label }}
-							{% endif %}
-							{% endfor %}
-						</td>
-
+						<td>{{ role.etats }}</td>
 
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
@@ -67,7 +60,8 @@
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
-							<a href="{% url 'print_document' %}" target="_blank">Imprimer</a>
+							<a href="{% url 'print_document' role_id=role.id %}" target="_blank">Imprimer</a>
+
 
 						</td>
 					</tr>

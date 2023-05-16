@@ -62,8 +62,18 @@
                 </div>
             </div>
             <div class="col mx-4">
-                <button type="submit" class="btn btn-outline-success">Sauvegarder</button>
+                <button type="submit" class="btn btn-outline-success">Soumettre</button>
             </div>
+            {% comment %} {% if form.instance.etats == 'N/D' %}
+                <div class="col mx-4">
+                    <button type="submit" class="btn btn-outline-success">Soumettre</button>
+                </div>
+            {% else %}
+                <div class="col mx-4">
+                    <button type="submit" class="btn btn-outline-success">Approuver</button>
+                </div>
+            {% endif %} {% endcomment %}
+
         </form>
 
     </div>

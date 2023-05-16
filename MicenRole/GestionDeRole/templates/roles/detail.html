@@ -29,6 +29,7 @@
                                     <th>Document</th>
                                     <th>Observation_ct</th>
                                     <th>Etat</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +44,9 @@
                                     <td download>{{ role.document }}</td>
                                     <td>{{ role.observation_ct }}</td>
                                     <td>{{ role.etats }}</td>
+
+                                    <td> <a href="{% url 'update' role.id %}" class="btn btn-primary">Modifier</a></td>
+                                    <td> <a href="{% url 'delete' role.id %}" class="btn btn-danger">Supprimer <i class="fa-solid fa-eye"></i></a></td>
             
             
                                 </tr>
